@@ -21,21 +21,23 @@ const Footer = () => {
 					</div>
 				</div>
 			</footer>
-			<footer className="footer bg-[#7678ED] text-base-content border-base-300 border-t px-10 py-4">
-				<div className="grid-flow-col items-center font-black text-xl md:place-self-center">
-					<img fillRule="evenodd" clipRule="evenodd" className="fill-current" width="40" height="40" src={logo} alt="" />
-					<p className="font-bold">Lingo Bingo</p>
-				</div>
-				<div className="grid grid-flow-col gap-4 md:place-self-center text-2xl">
-					<a href="https://x.com/">
-						<FaXTwitter></FaXTwitter>
-					</a>
-					<a href="https://www.youtube.com/">
-						<FaYoutube></FaYoutube>
-					</a>
-					<a href="https://www.facebook.com/">
-						<FaFacebook></FaFacebook>
-					</a>
+			<footer className="bg-[#7678ED] text-base-content border-base-300 border-t px-10 py-4">
+				<div className="justify-center gap-20 md:gap-0 items-center flex mx-auto md:justify-around">
+					<div className="flex items-center font-black text-xl md:place-self-center">
+						<img fillRule="evenodd" clipRule="evenodd" className="fill-current" width="40" height="40" src={logo} alt="" />
+						<p className="font-bold">Lingo Bingo</p>
+					</div>
+					<div className="flex gap-4 md:place-self-center text-2xl">
+						<a href="https://x.com/">
+							<FaXTwitter></FaXTwitter>
+						</a>
+						<a href="https://www.youtube.com/">
+							<FaYoutube></FaYoutube>
+						</a>
+						<a href="https://www.facebook.com/">
+							<FaFacebook></FaFacebook>
+						</a>
+					</div>
 				</div>
 			</footer>
 			<footer className="footer bg-[#7678ED] flex text-center justify-center border-base-300 border-t px-10 py-4">Copyright © 2025 - All right reserved by Lingo Bingo</footer>
