@@ -3,21 +3,23 @@ import {FaFacebook, FaXTwitter, FaYoutube} from "react-icons/fa6";
 
 const Footer = () => {
 	return (
-		<div className="">
-			<footer className="footer sm:footer-horizontal bg-[#7678ED] text-base-content p-10">
-				<nav className="text-center">
-					<h6 className="footer-title">Contuct us</h6>
-					<a className="link link-hover">Phone: 0224423</a>
-					<a className="link link-hover">Email: lingobingo@gmail.com</a>
-					<a className="link link-hover">Location: Shewrapara</a>
-					<a className="link link-hover">Fax: 993324</a>
-				</nav>
-				<nav>
-					<h6 className="footer-title">Legal</h6>
-					<a className="link link-hover">Terms of use</a>
-					<a className="link link-hover">Privacy policy</a>
-					<a className="link link-hover">Cookie policy</a>
-				</nav>
+		<div>
+			<footer className="bg-[#7678ED] text-center text-base-content p-10">
+				<div className="md:flex mx-auto md:justify-around ">
+					<div className="text-center flex-col">
+						<h6 className="footer-title">Contuct us</h6>
+						<a className="link link-hover block">Phone: 0224423</a>
+						<a className="link link-hover block">Email: lingobingo@gmail.com</a>
+						<a className="link link-hover block">Location: Shewrapara</a>
+						<a className="link link-hover block">Fax: 993324</a>
+					</div>
+					<div className="text-center flex-col mt-8 md:mt-0">
+						<h6 className="footer-title">Legal</h6>
+						<a className="link link-hover block">Terms of use</a>
+						<a className="link link-hover block">Privacy policy</a>
+						<a className="link link-hover block">Cookie policy</a>
+					</div>
+				</div>
 			</footer>
 			<footer className="footer bg-[#7678ED] text-base-content border-base-300 border-t px-10 py-4">
 				<div className="grid-flow-col items-center font-black text-xl md:place-self-center">
