@@ -29,7 +29,7 @@ const Navbar = () => {
 				</div>
 				<div className="flex justify-center items-center text-2xl">
 					<img fillRule="evenodd" clipRule="evenodd" className="fill-current" width="40" height="40" src={logo} alt="" />
-					<p className="font-bold">Lingo Bingo</p>
+					<p className="font-bold text-[16px] md:text-xl">Lingo Bingo</p>
 				</div>
 			</div>
 			<div className="navbar-center hidden lg:flex">
