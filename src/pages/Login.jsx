@@ -1,12 +1,14 @@
-import { FaGoogle } from "react-icons/fa6";
+import {FaGoogle} from "react-icons/fa6";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
+	const navigation = useNavigate();
 
-    const handleLoginBtn = (e) => {
-        e.preventDefault();
-    }
+	const handleLoginBtn = (e) => {
+		e.preventDefault();
+	};
 
-    return (
+	return (
 		<div className="hero bg-base-200 min-h-screen">
 			<div className="hero-content flex-col lg:flex-row-reverse">
 				<div className="text-center lg:text-left">
@@ -23,9 +25,18 @@ const Login = () => {
 							<div>
 								<a className="link link-hover">Forgot password?</a>
 							</div>
-							<button onClick={handleLoginBtn} className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">Login</button>
-							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">Login with Google <FaGoogle></FaGoogle> </button>
-                            <p>New here? Click to <u>register</u></p>
+							<button onClick={handleLoginBtn} className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+								Login
+							</button>
+							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+								Login with Google <FaGoogle></FaGoogle>{" "}
+							</button>
+							<p>
+								New here? Click to{" "}
+								<u className="hover:cursor-pointer" onClick={() => navigation("/register")}>
+									register
+								</u>
+							</p>
 						</fieldset>
 					</div>
 				</div>
