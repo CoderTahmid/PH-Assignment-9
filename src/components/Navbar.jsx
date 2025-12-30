@@ -1,7 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.png"
 
 const Navbar = () => {
+
+	const navigate = useNavigate();
+
 	return (
 		<div className="navbar bg-[#7678ED] shadow-sm">
 			<div className="navbar-start">
@@ -48,7 +51,7 @@ const Navbar = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="navbar-end">
+			<div className="navbar-end" onClick={() => navigate("/login")}>
 				<a className="btn bg-[#F7B801] shadow-none border-none">Login</a>
 			</div>
 		</div>
