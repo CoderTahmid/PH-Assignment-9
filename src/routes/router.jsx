@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import StartLearning from "../components/startLearning";
+import StartLearning from "../pages/StartLearning";
 import Tutorials from "../components/Tutorials";
 import AboutUs from "../components/AboutUs";
 import Home from "../pages/home";
