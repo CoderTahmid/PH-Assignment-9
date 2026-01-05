@@ -1,12 +1,37 @@
+import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
     const navigation = useNavigate();
+	const {createNewUser} = useContext(AuthContext);
+	const errorToast = errorMsg => toast.error(errorMsg);
+	const navigate = useNavigate();
 
     const handleRegisterBtn = (e) => {
         e.preventDefault();
+
+		const name = e.target.name.value;
+		const email = e.target.email.value;
+		const photoURL = e.target.photoURL.value;
+		const password = e.target.password.value;
+
+		createNewUser(email, password)
+			.then(() => {
+				navigate("/");
+			})
+			.catch((err) => {
+				if (err == "FirebaseError: Firebase: Error (auth/email-already-in-use).") {
+					errorToast("Try with a different email");
+				} else {
+					errorToast("Error occured, look the console for the error type");
+					console.log(err);
+				}
+			})
+
     }
 
     return (
@@ -18,19 +43,23 @@ const Register = () => {
 				</div>
 				<div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
 					<div className="card-body">
-						<fieldset className="fieldset">
+						<form onSubmit={handleRegisterBtn} className="fieldset">
 							<label className="label">Name</label>
-							<input type="email" className="input" placeholder="Name" />
+							<input name='name' type="text" className="input" placeholder="Name" />
+
 							<label className="label">Email</label>
-							<input type="email" className="input" placeholder="Email" />
+							<input name='email' type="email" className="input" placeholder="Email" />
+
 							<label className="label">Photo URL</label>
-							<input type="password" className="input" placeholder="Photo URL" />
+							<input name='photoURL' type="text" className="input" placeholder="Photo URL" />
+
 							<label className="label">Password</label>
-							<input type="password" className="input" placeholder="Password" />
+							<input name='password' type="password" className="input" placeholder="Password" />
+
 							<div>
 								<a className="link link-hover">Forgot password?</a>
 							</div>
-							<button onClick={handleRegisterBtn} className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
 								Register
 							</button>
 							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
@@ -42,7 +71,7 @@ const Register = () => {
 									login
 								</u>
 							</p>
-						</fieldset>
+						</form>
 					</div>
 				</div>
 			</div>
