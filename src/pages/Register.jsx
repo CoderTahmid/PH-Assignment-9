@@ -7,8 +7,9 @@ import { toast } from 'react-toastify';
 const Register = () => {
 
     const navigation = useNavigate();
-	const {createNewUser} = useContext(AuthContext);
+	const {createNewUser, setUser, updateUserProfile} = useContext(AuthContext);
 	const errorToast = errorMsg => toast.error(errorMsg);
+	const successToast = toastMsg => toast.success(toastMsg);
 	const navigate = useNavigate();
 
     const handleRegisterBtn = (e) => {
@@ -16,19 +17,24 @@ const Register = () => {
 
 		const name = e.target.name.value;
 		const email = e.target.email.value;
-		const photoURL = e.target.photoURL.value;
+		const photo = e.target.photoURL.value;
 		const password = e.target.password.value;
 
 		createNewUser(email, password)
-			.then(() => {
-				navigate("/");
+			.then((res) => {
+				setUser(res);
+				successToast("Registration Successful");
+				updateUserProfile({displayName: name, photoURL: photo})
+					.then(() => {
+						navigate("/");
+					})
 			})
 			.catch((err) => {
 				if (err == "FirebaseError: Firebase: Error (auth/email-already-in-use).") {
 					errorToast("Try with a different email");
 				} else {
 					errorToast("Error occured, look the console for the error type");
-					console.log(err);
+					console.error(err);
 				}
 			})
 

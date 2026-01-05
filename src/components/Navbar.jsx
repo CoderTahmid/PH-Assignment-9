@@ -1,9 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.png"
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
 
 	const navigate = useNavigate();
+	const {user} = useContext(AuthContext);
 
 	return (
 		<div className="navbar bg-[#7678ED] shadow-sm">
@@ -51,9 +54,15 @@ const Navbar = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="navbar-end" onClick={() => navigate("/login")}>
-				<a className="btn bg-[#F7B801] shadow-none border-none">Login</a>
-			</div>
+			{user ? (
+				<div className="navbar-end">
+					<p>Welcome {user.user.displayName}</p>
+				</div>
+			) : (
+				<div className="navbar-end" onClick={() => navigate("/login")}>
+					<a className="btn bg-[#F7B801] shadow-none border-none">Login</a>
+				</div>
+			)}
 		</div>
 	);
 };
