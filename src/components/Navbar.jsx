@@ -6,7 +6,15 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
 
 	const navigate = useNavigate();
-	const {user} = useContext(AuthContext);
+	const {user, userLogout, setUser} = useContext(AuthContext);
+
+	const handleLogout = () => {
+		userLogout()
+			.then(() => {
+				setUser("");
+				console.log(user.user.displayName);
+			})
+	}
 
 	return (
 		<div className="navbar bg-[#7678ED] shadow-sm">
@@ -55,8 +63,11 @@ const Navbar = () => {
 				</ul>
 			</div>
 			{user ? (
-				<div className="navbar-end">
+				<div className="navbar-end space-x-2.5">
 					<p>Welcome {user.user.displayName}</p>
+					<div onClick={handleLogout}>
+						<a className="btn bg-[#F7B801] shadow-none border-none">Logout</a>
+					</div>
 				</div>
 			) : (
 				<div className="navbar-end" onClick={() => navigate("/login")}>
