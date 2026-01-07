@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import {FaGoogle} from "react-icons/fa6";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const successToast = (msg) => toast.success(msg);
 	const errorToast = (msg) => toast.error(msg);
+	const location = useLocation();
 
 	const handleLoginBtn = (e) => {
 		e.preventDefault();
@@ -21,7 +22,7 @@ const Login = () => {
 			.then((res) => {
 				setUser(res.user);
 				successToast("Login successful!");
-				navigate("/");
+				navigate(location.state ? location.state : "/");
 			})
 			.catch((err) => {
 				errorToast("Failed to login");

@@ -6,6 +6,8 @@ import AboutUs from "../components/AboutUs";
 import Home from "../pages/home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Lesson from "../pages/Lesson";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
 	{
@@ -13,8 +15,8 @@ const router = createBrowserRouter([
 		element: <MainLayout></MainLayout>,
 		children: [
 			{
-				path: '/',
-				element: <Home></Home>
+				path: "/",
+				element: <Home></Home>,
 			},
 			{
 				path: "/start-learning",
@@ -26,16 +28,24 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/about-us",
-				element: <AboutUs></AboutUs>
+				element: <AboutUs></AboutUs>,
 			},
 			{
 				path: "/login",
-				element: <Login></Login>
+				element: <Login></Login>,
 			},
 			{
 				path: "/register",
-				element: <Register></Register>
-			}
+				element: <Register></Register>,
+			},
+			{
+				path: "/start-learning/:lesson_no",
+				element: (
+					<PrivateRoute>
+						<Lesson></Lesson>
+					</PrivateRoute>
+				)
+			},
 		],
 	},
 ]);

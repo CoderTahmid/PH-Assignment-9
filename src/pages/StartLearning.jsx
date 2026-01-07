@@ -11,7 +11,7 @@ const StartLearning = () => {
 	}
 
 	const handleClick = (num) => {
-		navigate(`lesson/lesson-${num}`);
+		navigate(`/start-learning/${num}`);
 	};
 
 	return (
