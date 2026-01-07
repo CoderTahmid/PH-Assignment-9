@@ -64,7 +64,7 @@ const Navbar = () => {
 			</div>
 			{user ? (
 				<div className="navbar-end space-x-2.5">
-					<p>Welcome {user.user.displayName}</p>
+					<p>Welcome {user.displayName}</p>
 					<div onClick={handleLogout}>
 						<a className="btn bg-[#F7B801] shadow-none border-none">Logout</a>
 					</div>
