@@ -22,7 +22,7 @@ const Register = () => {
 
 		createNewUser(email, password)
 			.then((res) => {
-				setUser(res);
+				setUser(res.user);
 				successToast("Registration Successful");
 				updateUserProfile({displayName: name, photoURL: photo})
 					.then(() => {

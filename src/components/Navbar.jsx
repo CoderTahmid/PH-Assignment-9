@@ -6,14 +6,9 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
 
 	const navigate = useNavigate();
-	const {user, userLogout, setUser} = useContext(AuthContext);
-
+	const {user, userLogout} = useContext(AuthContext);
 	const handleLogout = () => {
 		userLogout()
-			.then(() => {
-				setUser("");
-				console.log(user.user.displayName);
-			})
 	}
 
 	return (

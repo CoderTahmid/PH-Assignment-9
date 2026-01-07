@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
 	const navigation = useNavigate();
-	const {userSignIn, setUser, setLoading} = useContext(AuthContext);
+	const {userSignIn, setUser} = useContext(AuthContext);
 	const navigate = useNavigate();
 	const successToast = (msg) => toast.success(msg);
 	const errorToast = (msg) => toast.error(msg);
@@ -19,9 +19,8 @@ const Login = () => {
 
 		userSignIn(email, password)
 			.then((res) => {
-				setUser(res);
+				setUser(res.user);
 				successToast("Login successful!");
-				setLoading(false);
 				navigate("/");
 			})
 			.catch((err) => {
