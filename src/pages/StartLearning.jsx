@@ -55,7 +55,7 @@ const StartLearning = () => {
 					<iframe className="mx-auto  rounded-2xl w-full" width="560" height="315" src="https://www.youtube.com/embed/xg60VxyK-9I?si=wu9QOhbBFmDTZbZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 				</div>
 				<div onClick={handleViewMoreBtn} className="my-4 flex justify-center items-center">
-					<button className="btn w-full lg:w-[200px] lg:h-12 lg:text-[15px]  md:w-[220px] h-11 bg-[#F35B04] text-[14px] font-semibold rounded-xl">View more</button>
+					<button className="btn w-full lg:w-[200px] lg:h-12 lg:text-[15px]  md:w-[220px] h-11 bg-[#F7B801] text-[14px] font-semibold rounded-xl">View more</button>
 				</div>
 			</div>
 		</>

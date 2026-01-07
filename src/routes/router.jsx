@@ -44,7 +44,8 @@ const router = createBrowserRouter([
 					<PrivateRoute>
 						<Lesson></Lesson>
 					</PrivateRoute>
-				)
+				),
+				loader: () => fetch("../german_vocab.json"),
 			},
 		],
 	},
