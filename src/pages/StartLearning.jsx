@@ -7,9 +7,7 @@ const StartLearning = () => {
 	const {user} = useContext(AuthContext);
 
 	const handleViewMoreBtn = () => {
-		if (user.displayName) {
-			navigate("/tutorials");
-		}
+		user ? navigate("/tutorials") : navigate("/login");
 	}
 
 	const handleClick = (num) => {
