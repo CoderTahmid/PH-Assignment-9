@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
 import ErrorPage from "../pages/ErrorPage";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router = createBrowserRouter([
 	{
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 			},
+			{
+				path: "/forget-password",
+				element: <ForgetPassword></ForgetPassword>
+			}
 		],
 		errorElement: <ErrorPage></ErrorPage>
 	},

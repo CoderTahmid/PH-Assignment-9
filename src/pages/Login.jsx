@@ -46,7 +46,7 @@ const Login = () => {
 							<label className="label">Password</label>
 							<input name="password" type="password" className="input" placeholder="Password" />
 
-							<div>
+							<div onClick={() => navigate("/forget-password")}>
 								<a className="link link-hover">Forgot password?</a>
 							</div>
 							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
