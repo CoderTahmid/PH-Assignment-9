@@ -1,5 +1,4 @@
 import {FaVolumeUp} from "react-icons/fa";
-import WhenToSayModal from "./WhenToSayModal";
 
 const LessonCard = ({lesson, setModalData}) => {
 	const {word, pronunciation, part_of_speech, meaning, difficulty, when_to_say, example} = lesson;
@@ -17,6 +16,13 @@ const LessonCard = ({lesson, setModalData}) => {
 		setModalData({word, meaning, when_to_say, example});
 		document.getElementById("my_modal_1").showModal();
 	};
+
+	const pronounceWord = (word) => {
+		const utterance = new SpeechSynthesisUtterance(word);
+		utterance.lang = "de-DE"; 
+		window.speechSynthesis.speak(utterance);
+	};
+
 	return (
 		<>
 			<div className="relative max-w-md rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200">
@@ -39,7 +45,7 @@ const LessonCard = ({lesson, setModalData}) => {
 					<div className="h-px bg-gray-200"></div>
 
 					<div className="flex items-center justify-between">
-						<button className="flex items-center gap-2 text-sm text-[#7678ED] hover:text-[#3D348B] transition">
+						<button onClick={() => pronounceWord(word)} className="flex items-center gap-2 text-sm text-[#7678ED] hover:text-[#3D348B] transition hover:cursor-pointer">
 							<FaVolumeUp />
 							Pronunciation
 						</button>
