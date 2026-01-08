@@ -26,7 +26,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/tutorials",
-				element: <Tutorials></Tutorials>,
+				element: (
+					<PrivateRoute>
+						<Tutorials></Tutorials>
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/about-us",
@@ -63,8 +67,8 @@ const router = createBrowserRouter([
 					<PrivateRoute>
 						<UpdateProfile></UpdateProfile>
 					</PrivateRoute>
-				)
-			}
+				),
+			},
 		],
 	},
 ]);
