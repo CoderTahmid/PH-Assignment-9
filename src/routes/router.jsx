@@ -8,6 +8,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Lesson from "../pages/Lesson";
 import PrivateRoute from "./PrivateRoute";
+import MyProfile from "../pages/MyProfile";
+import UpdateProfile from "../pages/UpdateProfile";
 
 const router = createBrowserRouter([
 	{
@@ -47,6 +49,22 @@ const router = createBrowserRouter([
 				),
 				loader: () => fetch("../german_vocab.json"),
 			},
+			{
+				path: "/my-profile",
+				element: (
+					<PrivateRoute>
+						<MyProfile></MyProfile>
+					</PrivateRoute>
+				),
+			},
+			{
+				path: "/update-profile",
+				element: (
+					<PrivateRoute>
+						<UpdateProfile></UpdateProfile>
+					</PrivateRoute>
+				)
+			}
 		],
 	},
 ]);

@@ -34,6 +34,9 @@ const Navbar = () => {
 						<li>
 							<NavLink to={`/about-us`}>About us</NavLink>
 						</li>
+						<li className={user ? `inline` : `hidden`}>
+							<NavLink to={`/my-profile`}>My profile</NavLink>
+						</li>
 					</ul>
 				</div>
 				<div className="flex justify-center items-center text-2xl">
@@ -54,6 +57,9 @@ const Navbar = () => {
 					</li>
 					<li>
 						<NavLink to={`/about-us`}>About us</NavLink>
+					</li>
+					<li className={user ? `inline` : `hidden`}>
+						<NavLink to={`/my-profile`}>My profile</NavLink>
 					</li>
 				</ul>
 			</div>
