@@ -23,19 +23,29 @@ const Navbar = () => {
 					</div>
 					<ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
 						<li>
-							<NavLink to={`/`}>Home</NavLink>
+							<NavLink className={({isActive}) => (isActive ? "font-bold text-primary bg-base-200" : " ")} to={`/`}>
+								Home
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to={`/start-learning`}>Start learning</NavLink>
+							<NavLink className={({isActive}) => (isActive ? "font-bold text-primary bg-base-200" : " ")} to={`/start-learning`}>
+								Start learning
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to={`/tutorials`}>Tutorials</NavLink>
+							<NavLink className={({isActive}) => (isActive ? "font-bold text-primary bg-base-200" : " ")} to={`/tutorials`}>
+								Tutorials
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to={`/about-us`}>About us</NavLink>
+							<NavLink className={({isActive}) => (isActive ? "font-bold text-primary bg-base-200" : " ")} to={`/about-us`}>
+								About us
+							</NavLink>
 						</li>
 						<li className={user ? `inline` : `hidden`}>
-							<NavLink to={`/my-profile`}>My profile</NavLink>
+							<NavLink className={({isActive}) => (isActive ? "font-bold text-primary bg-base-200" : " ")} to={`/my-profile`}>
+								My profile
+							</NavLink>
 						</li>
 					</ul>
 				</div>
@@ -47,19 +57,29 @@ const Navbar = () => {
 			<div className="navbar-center hidden lg:flex">
 				<ul className="menu menu-horizontal px-1">
 					<li>
-						<NavLink to={`/`}>Home</NavLink>
+						<NavLink className={({isActive}) => (isActive ? "font-black text-primary underline" : " ")} to={`/`}>
+							Home
+						</NavLink>
 					</li>
 					<li>
-						<NavLink to={`/start-learning`}>Start learning</NavLink>
+						<NavLink className={({isActive}) => (isActive ? "font-black text-primary underline" : " ")} to={`/start-learning`}>
+							Start learning
+						</NavLink>
 					</li>
 					<li>
-						<NavLink to={`/tutorials`}>Tutorials</NavLink>
+						<NavLink className={({isActive}) => (isActive ? "font-black text-primary underline" : " ")} to={`/tutorials`}>
+							Tutorials
+						</NavLink>
 					</li>
 					<li>
-						<NavLink to={`/about-us`}>About us</NavLink>
+						<NavLink className={({isActive}) => (isActive ? "font-black text-primary underline" : " ")} to={`/about-us`}>
+							About us
+						</NavLink>
 					</li>
 					<li className={user ? `inline` : `hidden`}>
-						<NavLink to={`/my-profile`}>My profile</NavLink>
+						<NavLink className={({isActive}) => (isActive ? "font-black text-primary underline" : " ")} to={`/my-profile`}>
+							My profile
+						</NavLink>
 					</li>
 				</ul>
 			</div>
