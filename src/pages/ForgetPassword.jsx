@@ -1,8 +1,15 @@
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
     const {user, resetPassword} = useContext(AuthContext);
+    const successToast = (msg) => toast.success(msg);
+
+    const handleResetPasswordBtn = () => {
+        successToast("An email was sent to your mail, don't forget to check the spam folder!");
+        resetPassword();
+    }
 
     return (
 		<div className="hero bg-base-200 min-h-screen">
@@ -17,7 +24,7 @@ const ForgetPassword = () => {
 							<label className="label">Email</label>
 							<input name="email" value={user ? user.email : ` `} type="email" className="input" placeholder="Email" />
 
-							<a target="_blank" onClick={resetPassword} href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" className="bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+							<a target="_blank" onClick={handleResetPasswordBtn} href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" className="bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
 								Reset your password
 							</a>
 						</form>
