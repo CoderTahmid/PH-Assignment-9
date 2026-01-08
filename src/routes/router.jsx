@@ -10,6 +10,7 @@ import Lesson from "../pages/Lesson";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
 	{
@@ -70,7 +71,9 @@ const router = createBrowserRouter([
 				),
 			},
 		],
+		errorElement: <ErrorPage></ErrorPage>
 	},
+	
 ]);
 
 export default router;
