@@ -42,7 +42,7 @@ const AuthProvider = ({children}) => {
 		userLogout,
 		loading,
 		setLoading,
-		resetPassword
+		resetPassword,
 	};
 
 	useEffect(() => {

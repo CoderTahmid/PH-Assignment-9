@@ -24,7 +24,7 @@ const ForgetPassword = () => {
 							<label className="label">Email</label>
 							<input name="email" value={user ? user.email : ` `} type="email" className="input" placeholder="Email" />
 
-							<a target="_blank" onClick={handleResetPasswordBtn} href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" className="bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+							<a onClick={handleResetPasswordBtn} href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" className="bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
 								Reset your password
 							</a>
 						</form>
