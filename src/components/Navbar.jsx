@@ -86,6 +86,7 @@ const Navbar = () => {
 			{user ? (
 				<div className="navbar-end space-x-2.5">
 					<p>Welcome {user.displayName}</p>
+					<img className="rounded-full w-10 h-10" src={user.photoURL} alt="" />
 					<div onClick={handleLogout}>
 						<a className="btn bg-[#F7B801] shadow-none border-none">Logout</a>
 					</div>
