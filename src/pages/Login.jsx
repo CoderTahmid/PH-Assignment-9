@@ -28,7 +28,7 @@ const Login = () => {
 			})
 			.catch((err) => {
 				errorToast("Failed to login");
-				console.log(err);
+				// console.log(err);
 			});
 	};
 
@@ -41,7 +41,7 @@ const Login = () => {
 			})
 			.catch((err) => {
 				errorToast("Failed to login");
-				console.log(err);
+				// console.log(err);
 			});
 	};
 

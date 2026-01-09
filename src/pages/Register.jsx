@@ -43,7 +43,7 @@ const Register = () => {
 					errorToast("This is email is already in used, Try with a different email");
 				} else {
 					errorToast("Error occured, look the console for the error type");
-					console.error(err);
+					// console.error(err);
 				}
 			});
 	};
@@ -63,7 +63,7 @@ const Register = () => {
 					errorToast("Try with a different email");
 				} else {
 					errorToast("Error occured, look the console for the error type");
-					console.error(err);
+					// console.error(err);
 				}
 			});
 	};

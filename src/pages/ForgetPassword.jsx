@@ -23,7 +23,7 @@ const ForgetPassword = () => {
 			})
 			.catch((err) => {
 				errorToast("Ops! and error occured");
-				console.error(err);
+				// console.error(err);
 			})
 	};
 
