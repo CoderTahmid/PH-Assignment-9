@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {FaGoogle} from "react-icons/fa6";
 import {useNavigate} from "react-router-dom";
 import {AuthContext} from "../provider/AuthProvider";
@@ -10,6 +10,7 @@ const Register = () => {
 	const errorToast = (errorMsg) => toast.error(errorMsg);
 	const successToast = (toastMsg) => toast.success(toastMsg);
 	const navigate = useNavigate();
+	const [passwordRegexFlag, setPasswordRegexFlag] = useState(true);
 
 	const handleRegisterBtn = (e) => {
 		e.preventDefault();
@@ -18,6 +19,16 @@ const Register = () => {
 		const email = e.target.email.value;
 		const photo = e.target.photoURL.value;
 		const password = e.target.password.value;
+
+		const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+		if (!passwordRegex.test(password)) {
+			setPasswordRegexFlag(false);
+			return; 
+		} else if (passwordRegex.test(password)) {
+			setPasswordRegexFlag(true);
+		}
+
 
 		createNewUser(email, password)
 			.then((res) => {
@@ -29,7 +40,7 @@ const Register = () => {
 			})
 			.catch((err) => {
 				if (err == "FirebaseError: Firebase: Error (auth/email-already-in-use).") {
-					errorToast("Try with a different email");
+					errorToast("This is email is already in used, Try with a different email");
 				} else {
 					errorToast("Error occured, look the console for the error type");
 					console.error(err);
@@ -78,6 +89,7 @@ const Register = () => {
 
 							<label className="label">Password</label>
 							<input name="password" type="password" className="input" placeholder="Password" />
+							<p className={passwordRegexFlag ? "hidden" : "inline text-red-500"}>Password must be at least 6 characters long and include both uppercase and lowercase letters.</p>
 
 							<div>
 								<a className="link link-hover">Forgot password?</a>
