@@ -3,10 +3,12 @@ import {FaGoogle} from "react-icons/fa6";
 import {useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { LoginFormContext } from "../provider/LoginFormDataProvider";
 
 const Login = () => {
 	const navigation = useNavigate();
 	const {userSignIn, setUser} = useContext(AuthContext);
+	const {setLoginFormEmail} = useContext(LoginFormContext);
 	const navigate = useNavigate();
 	const successToast = (msg) => toast.success(msg);
 	const errorToast = (msg) => toast.error(msg);
@@ -41,7 +43,7 @@ const Login = () => {
 					<div className="card-body">
 						<form onSubmit={handleLoginBtn} className="fieldset">
 							<label className="label">Email</label>
-							<input name="email" type="email" className="input" placeholder="Email" />
+							<input name="email" type="email" className="input" placeholder="Email" onChange={(e) => setLoginFormEmail(e.target.value)} />
 
 							<label className="label">Password</label>
 							<input name="password" type="password" className="input" placeholder="Password" />
@@ -49,9 +51,7 @@ const Login = () => {
 							<div onClick={() => navigate("/forget-password")}>
 								<a className="link link-hover">Forgot password?</a>
 							</div>
-							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
-								Login
-							</button>
+							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">Login</button>
 							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
 								Login with Google <FaGoogle></FaGoogle>{" "}
 							</button>
