@@ -51,7 +51,7 @@ const Navbar = () => {
 				</div>
 				<div className="flex justify-center items-center text-2xl">
 					<img fillRule="evenodd" clipRule="evenodd" className="fill-current" width="40" height="40" src={logo} alt="" />
-					<p className="font-bold text-[16px] md:text-xl">Lingo Bingo</p>
+					<p className="font-bold text-[13px] md:text-xl">Lingo Bingo</p>
 				</div>
 			</div>
 			<div className="navbar-center hidden lg:flex">
@@ -84,11 +84,11 @@ const Navbar = () => {
 				</ul>
 			</div>
 			{user ? (
-				<div className="navbar-end space-x-2.5">
-					<p>Welcome {user.displayName}</p>
+				<div className="navbar-end space-x-1 md:space-x-2.5">
+					<p className="text-xs md:text-[16px] block">Welcome {user.displayName}</p>
 					<img className="rounded-full w-10 h-10" src={user.photoURL} alt="" />
-					<div onClick={handleLogout}>
-						<a className="btn bg-[#F7B801] shadow-none border-none">Logout</a>
+					<div className="" onClick={handleLogout}>
+						<a className="btn bg-[#F7B801] shadow-none border-none text-[10px] md:text-[14px]">Logout</a>
 					</div>
 				</div>
 			) : (
