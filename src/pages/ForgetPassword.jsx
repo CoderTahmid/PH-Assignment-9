@@ -2,12 +2,14 @@ import {useContext} from "react";
 import {AuthContext} from "../provider/AuthProvider";
 import {toast} from "react-toastify";
 import { LoginFormContext } from "../provider/LoginFormDataProvider";
+import { useNavigate } from "react-router-dom";
 
 const ForgetPassword = () => {
 	const {resetPassword} = useContext(AuthContext);
 	const {loginFormEmail} = useContext(LoginFormContext);
 	const successToast = (msg) => toast.success(msg);
 	const errorToast = (msg) => toast.error(msg);
+	const navigate = useNavigate();
 
 	const handleResetPasswordBtn = (e) => {
 		e.preventDefault();
@@ -17,6 +19,7 @@ const ForgetPassword = () => {
 			.then(() => {
 				successToast("An email was sent to your mail, don't forget to check the spam folder!");
 				window.open("https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox", "_blank");
+				navigate('/login');
 			})
 			.catch((err) => {
 				errorToast("Ops! and error occured");
@@ -35,7 +38,7 @@ const ForgetPassword = () => {
 					<div className="card-body">
 						<form onSubmit={handleResetPasswordBtn} className="fieldset">
 							<label className="label">Email</label>
-							<input name="email" type="email" className="input" placeholder="Email" value={loginFormEmail || " "} />
+							<input name="email" type="email" className="input" placeholder="Email" value={loginFormEmail && loginFormEmail} />
 
 							<button type="submit" className="bg-[#F7B801] border-none text-black btn btn-neutral mt-4 flex justify-center items-center">
 								Reset your password
