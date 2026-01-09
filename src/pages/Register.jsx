@@ -1,19 +1,18 @@
-import { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../provider/AuthProvider';
-import { toast } from 'react-toastify';
+import {useContext} from "react";
+import {FaGoogle} from "react-icons/fa6";
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../provider/AuthProvider";
+import {toast} from "react-toastify";
 
 const Register = () => {
-
-    const navigation = useNavigate();
-	const {createNewUser, setUser, updateUserProfile} = useContext(AuthContext);
-	const errorToast = errorMsg => toast.error(errorMsg);
-	const successToast = toastMsg => toast.success(toastMsg);
+	const navigation = useNavigate();
+	const {createNewUser, setUser, updateUserProfile, authenticateUserWithGooogle} = useContext(AuthContext);
+	const errorToast = (errorMsg) => toast.error(errorMsg);
+	const successToast = (toastMsg) => toast.success(toastMsg);
 	const navigate = useNavigate();
 
-    const handleRegisterBtn = (e) => {
-        e.preventDefault();
+	const handleRegisterBtn = (e) => {
+		e.preventDefault();
 
 		const name = e.target.name.value;
 		const email = e.target.email.value;
@@ -24,10 +23,9 @@ const Register = () => {
 			.then((res) => {
 				setUser(res.user);
 				successToast("Registration Successful");
-				updateUserProfile({displayName: name, photoURL: photo})
-					.then(() => {
-						navigate("/");
-					})
+				updateUserProfile({displayName: name, photoURL: photo}).then(() => {
+					navigate("/");
+				});
 			})
 			.catch((err) => {
 				if (err == "FirebaseError: Firebase: Error (auth/email-already-in-use).") {
@@ -36,11 +34,30 @@ const Register = () => {
 					errorToast("Error occured, look the console for the error type");
 					console.error(err);
 				}
+			});
+	};
+
+	const handleGoogleRegisterBtn = () => {
+		authenticateUserWithGooogle()
+			.then((res) => {
+				setUser(res.user);
+				successToast("Registration Successful");
+				navigate("/");
+				updateUserProfile({displayName: res.user.displayName, photoURL: res.user.photoURL}).then(() => {
+					navigate("/");
+				});
 			})
+			.catch((err) => {
+				if (err == "FirebaseError: Firebase: Error (auth/email-already-in-use).") {
+					errorToast("Try with a different email");
+				} else {
+					errorToast("Error occured, look the console for the error type");
+					console.error(err);
+				}
+			});
+	};
 
-    }
-
-    return (
+	return (
 		<div className="hero bg-base-200 min-h-screen">
 			<div className="hero-content flex-col lg:flex-row-reverse">
 				<div className="text-center lg:text-left">
@@ -51,24 +68,24 @@ const Register = () => {
 					<div className="card-body">
 						<form onSubmit={handleRegisterBtn} className="fieldset">
 							<label className="label">Name</label>
-							<input name='name' type="text" className="input" placeholder="Name" />
+							<input name="name" type="text" className="input" placeholder="Name" />
 
 							<label className="label">Email</label>
-							<input name='email' type="email" className="input" placeholder="Email" />
+							<input name="email" type="email" className="input" placeholder="Email" />
 
 							<label className="label">Photo URL</label>
-							<input name='photoURL' type="text" className="input" placeholder="Photo URL" />
+							<input name="photoURL" type="text" className="input" placeholder="Photo URL" />
 
 							<label className="label">Password</label>
-							<input name='password' type="password" className="input" placeholder="Password" />
+							<input name="password" type="password" className="input" placeholder="Password" />
 
 							<div>
 								<a className="link link-hover">Forgot password?</a>
 							</div>
-							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+							<button type="submit" className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
 								Register
 							</button>
-							<button className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
+							<button onClick={handleGoogleRegisterBtn} type="button" className=" bg-[#F7B801] border-none text-black btn btn-neutral mt-4">
 								Register with Google <FaGoogle></FaGoogle>{" "}
 							</button>
 							<p>
